@@ -49,7 +49,6 @@ function enable_tde
     $count= (Invoke-Sqlcmd -Query "SELECT COUNT(*)
                                 FROM ($status_query) AS T" -ServerInstance $instance -username $username -password $pw)[0]
 
-    $date=Get-Date -Format "dd_MM_yyyy_HH_mm"
 
     foreach($item in $status)
     { 
@@ -70,8 +69,8 @@ function enable_tde
     {
         if($item.name -like $DB -and $item.is_encrypted -eq 0)
         {
-            $KEK="ekm_login_key_v1_" + $date
-            $SO="SQL_Server_Key_v1_" + $date
+            $KEK="ekm_login_key_v1"
+            $SO="SQL_Server_Key_v1"
 
             if($count -eq 0)
             {

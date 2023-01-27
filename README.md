@@ -52,6 +52,6 @@ Enter Instance name: test
 Enter username: testuser
 Enter password:
 or
-.\SQL_TDE.ps1 -instance test -username testuser -password testpassword
+.\sql_tde.ps1 -instance test -username testuser -password testpassword
 ```
 WARNING: Passing your password via -password is not very secure.It is better to enter your password interactively.

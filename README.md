@@ -47,7 +47,7 @@ Use login which has sysadmin role & mapped to database you want to alter.
 
 ## Script Execution:
 ```
-.\SQL_TDE.ps1
+.\sql_tde.ps1
 Enter Instance name: test
 Enter username: testuser
 Enter password:

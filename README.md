@@ -46,6 +46,9 @@ Create a group and an app in {DSM_URL}.
 Use login which has sysadmin role & mapped to database you want to alter.
 
 ## Script Execution:
+
+To execute this script import module SQLPS in your system using command: `Import-Module sqlps`
+
 ```
 .\sql_tde.ps1
 Enter Instance name: test

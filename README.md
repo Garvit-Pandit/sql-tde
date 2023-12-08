@@ -1,3 +1,7 @@
+## ##############Disclaimer###############
+
+`This is a sample script. Running this script in your production environment without prior testing is not advisable. Fortanix is not liable or responsible for any damage caused by the execution of the script in your environment.`
+
 ## Prerequisite:
 
 ### Installation

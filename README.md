@@ -62,3 +62,74 @@ or
 .\sql_tde.ps1 -instance test -username testuser -password testpassword
 ```
 WARNING: Passing your password via -password is not very secure.It is better to enter your password interactively.
+
+The `sql_tde.ps1` script will ask for the following user inputs:
+
+* **Instance name**
+     enter the name of the SQL Server instance they want to connect to.
+* **Username**
+     enter the username for connecting to the SQL Server instance.
+* **Password** (entered securely)
+     enter their password securely for authentication.
+* **Menu selection**:
+     choose an option from the displayed menu (1, 2, 3, or Q).
+    * '1' for "check status"
+        Displays the encryption status of databases on the specified SQL Server instance.
+    * '2' for "Enable TDE"
+        Initiates the process to enable Transparent Data Encryption for a chosen database.
+    * '3' for "Rotation"
+        Initiates the process to rotate the Key Encryption Key (KEK) for an encrypted database.
+    * 'Q' to quit
+        Exits the script.
+* If enabling TDE (menu option '2'):
+    * **Database name**
+         enter the name of the database on which they want to enable TDE.
+    * "Do you have a KEK/master key & want to use the same (y/n)?"
+        Asks the user if they want to use an existing Key Encryption Key (KEK) or create a new one.
+    * If 'y' or 'Y':
+        * "Enter the name of your KEK/master-key from above provided set of keys"
+            Uses the specified existing KEK to encrypt the Database Encryption Key (DEK).
+        * "Enter the algorithm you want to use to create DEK(AES_128/AES_192/AES_256 )"
+            Uses the chosen algorithm to create the Database Encryption Key (DEK).
+    * If 'n' or 'N':
+        * "Enter the name to create KEK/master-key"
+            Creates a new Key Encryption Key (KEK) with the provided name.
+        * "Enter the name to create Provider key"
+            Creates a provider key within the Extensible Key Management (EKM) provider.
+        * **API-key** to create credential (entered securely)
+            Uses the API key to authenticate with the cryptographic provider when creating credentials.
+        * "Enter the name of your cryptographic provider from above provided set of providers"
+            Uses the specified cryptographic provider for key management operations.
+        * "Enter the name to create credential"
+            Creates a SQL Server credential for the cryptographic provider.
+        * "Enter Identity to create credential"
+            Sets the identity for the SQL Server credential.
+        * "Enter login name to map credential"
+            Maps the newly created credential to the specified SQL Server login.
+        * "Enter the algorithm you want to use to create KEK(RSA_4096/RSA_3072/RSA_2048/RSA_1024/RSA_512 )"
+            Uses the chosen RSA algorithm to create the new KEK.
+        * "Enter the name to create db engine credential"
+            Creates a credential specifically for the database engine to interact with the provider.
+        * "Enter Identity to create db engine credential"
+            Sets the identity for the database engine credential.
+        * "Enter the name to create db engine login"
+            Creates a SQL Server login from the asymmetric key for the database engine.
+        * "Enter the algorithm you want to use to create DEK(AES_128/AES_192/AES_256 )"
+            Uses the chosen algorithm to create the Database Encryption Key (DEK).
+* If performing rotation (menu option '3'):
+    * **Database name**
+         enter the name of the database for which they want to rotate the KEK.
+    * **API-key** to create credential (entered securely)
+        Uses the API key to authenticate with the cryptographic provider during the rotation process.
+    * "Enter the name to create KEK/master-key"
+        Creates a new Key Encryption Key (KEK) with the provided name for the rotation.
+    * "Enter the name to create Provider key"
+        Creates a provider key within the EKM provider for the new KEK.
+    * "Enter the algorithm you want to use to create KEK(RSA_2048/RSA_1024 )"
+        Uses the chosen RSA algorithm to create the new KEK for rotation.
+    * "Enter the name to create db engine credential"
+        Creates a new database engine credential for the rotation.
+    * "Enter Identity to create db engine credential"
+        Sets the identity for the new database engine credential.
+    * "Enter the name to create db engine login"
+        Creates a new SQL Server login from the asymmetric key for the database engine during rotation.

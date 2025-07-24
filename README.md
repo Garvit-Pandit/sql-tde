@@ -84,16 +84,16 @@ The `sql_tde.ps1` script will ask for the following user inputs:
 * If enabling TDE (menu option '2'):
     * **Database name**
          enter the name of the database on which they want to enable TDE.
-    * "Do you have a KEK/master key & want to use the same (y/n)?"
-        Asks the user if they want to use an existing Key Encryption Key (KEK) or create a new one.
+    * "Do you have a MEK/master encryption key & want to use the same (y/n)?"
+        Asks the user if they want to use an existing Master Encryption Key (MEK) or create a new one.
     * If 'y' or 'Y':
-        * "Enter the name of your KEK/master-key from above provided set of keys"
-            Uses the specified existing KEK to encrypt the Database Encryption Key (DEK).
-        * "Enter the algorithm you want to use to create DEK(AES_128/AES_192/AES_256 )"
-            Uses the chosen algorithm to create the Database Encryption Key (DEK).
+        * "Enter the name of your MEK/master encryption key from above provided set of keys"
+            Uses the specified existing MEK to encrypt the Data Encryption Key (DEK).
+        * "Enter the algorithm you want to use to create DEK(AES_128/AES_192/AES_256)"
+            Uses the chosen algorithm to create the Data Encryption Key (DEK).
     * If 'n' or 'N':
-        * "Enter the name to create KEK/master-key"
-            Creates a new Key Encryption Key (KEK) with the provided name.
+        * "Enter the name to create MEK/master encryption key"
+            Creates a new Key Master Encryption Key (MEK) with the provided name.
         * "Enter the name to create Provider key"
             Creates a provider key within the Extensible Key Management (EKM) provider.
         * **API-key** to create credential (entered securely)
@@ -106,8 +106,8 @@ The `sql_tde.ps1` script will ask for the following user inputs:
             Sets the identity for the SQL Server credential.
         * "Enter login name to map credential"
             Maps the newly created credential to the specified SQL Server login.
-        * "Enter the algorithm you want to use to create KEK(RSA_4096/RSA_3072/RSA_2048/RSA_1024/RSA_512 )"
-            Uses the chosen RSA algorithm to create the new KEK.
+        * "Enter the algorithm you want to use to create MEK(RSA_4096/RSA_3072/RSA_2048/RSA_1024/RSA_512 )"
+            Uses the chosen RSA algorithm to create the new MEK.
         * "Enter the name to create db engine credential"
             Creates a credential specifically for the database engine to interact with the provider.
         * "Enter Identity to create db engine credential"
@@ -115,18 +115,18 @@ The `sql_tde.ps1` script will ask for the following user inputs:
         * "Enter the name to create db engine login"
             Creates a SQL Server login from the asymmetric key for the database engine.
         * "Enter the algorithm you want to use to create DEK(AES_128/AES_192/AES_256 )"
-            Uses the chosen algorithm to create the Database Encryption Key (DEK).
+            Uses the chosen algorithm to create the Data Encryption Key (DEK).
 * If performing rotation (menu option '3'):
     * **Database name**
-         enter the name of the database for which they want to rotate the KEK.
+         enter the name of the database for which they want to rotate the MEK.
     * **API-key** to create credential (entered securely)
         Uses the API key to authenticate with the cryptographic provider during the rotation process.
-    * "Enter the name to create KEK/master-key"
-        Creates a new Key Encryption Key (KEK) with the provided name for the rotation.
+    * "Enter the name to create MEK/master encryption key"
+        Creates a new Master Encryption Key (MEK) with the provided name for the rotation.
     * "Enter the name to create Provider key"
-        Creates a provider key within the EKM provider for the new KEK.
-    * "Enter the algorithm you want to use to create KEK(RSA_2048/RSA_1024 )"
-        Uses the chosen RSA algorithm to create the new KEK for rotation.
+        Creates a provider key within the EKM provider for the new MEK.
+    * "Enter the algorithm you want to use to create MEK(RSA_2048/RSA_1024 )"
+        Uses the chosen RSA algorithm to create the new MEK for rotation.
     * "Enter the name to create db engine credential"
         Creates a new database engine credential for the rotation.
     * "Enter Identity to create db engine credential"
